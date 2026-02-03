@@ -4,7 +4,7 @@
 		<item key="DIALOG_X_ORIGIN" value="748"/>
 		<item key="DIALOG_Y_ORIGIN" value="0"/>
 		<item key="DIALOG_WIDTH" value="962"/>
-		<item key="DIALOG_HEIGHT" value="1016"/>
+		<item key="DIALOG_HEIGHT" value="1019"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
 	</section>
 	<section name="org.eclipse.ui.internal.dialogs.WorkbenchEditorsDialog">

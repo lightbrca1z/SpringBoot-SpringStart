@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SpringBoot Mustache Sample Page3 flag</title>
+</head>
+<body class="container">
+<h1 class="display-4 mb-4">Hello Page</h1>
+<h6>※flagの状態: {{flag}}</h6>
+{{#flag}}
+<p class="alert alert-primary">{{msg}}</p>
+{{/flag}}
+{{^flag}}
+<p>no message...</p>
+{{/flag}}
+
+				
