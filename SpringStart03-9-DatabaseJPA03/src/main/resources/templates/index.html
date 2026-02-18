@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SpringBoot JPA-WebApplication01</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<body class="container">
+	<h1 class="diplay-4 mb-4" th:text="${title}"></h1>
+	<p th:text="${msg}"></p>
+	<pre th:text="${data}"></pre>
+	
+	<form id="createForm" method="post" action="/" th:object="${formModel}">
+	<div class="mb-3">
+		<label for="name" class="form-label">Name</label>
+		<input type="text" class="form-control" name="name" th:value="*{name}" />
+	</div>
+	<div class="mb-3">
+		<label for="name" class="form-label">Mail</label>
+		<input type="text" class="form-control" name="mail" th:value="*{mail}" />
+	</div>
+	<div class="mb-3">
+		<label for="name" class="form-label">Age</label>
+		<input type="number" class="form-control" name="age" th:value="*{age}" />
+	</div>
+  	<div class="mb-3">
+   	 <label class="form-label">Memo</label>
+   	 <textarea class="form-control" name="memo" th:text="*{memo}"></textarea>
+  	</div>
+	</form>
+
+	<!-- ボタン行だけ横並び -->
+	<div class="d-flex gap-2">
+  	<!-- Createボタン（Createフォームを送信） -->
+  	<button type="submit" form="createForm" class="btn btn-primary">Create</button>
+
+  	<!-- Resetフォーム -->
+  	<form method="post" th:action="@{/reset}"
+        onsubmit="return confirm('本当に全件削除しますか？');">
+    <button type="submit" class="btn btn-danger">Reset</button>
+  </form>
+</div>
+	
+	<table class="table">
+		<thead>
+			<tr><th>ID</th><th>Name</th><th>Mail</th><th>Age</th><th>Edit</th><th>Delete</th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="item : ${data}">
+				<td th:text="${item.id}"></td>
+				<td th:text="${item.name}"></td>
+				<td th:text="${item.mail}"></td>
+				<td th:text="${item.age}"></td>
+				<td>
+			      <a th:href="@{/edit/{id}(id=${item.id})}" class="btn btn-outline-primary btn-sm">Edit</a>
+			    </td>
+				<td>
+			      <form th:action="@{/delete}" method="post">
+			        <input type="hidden" name="id" th:value="${item.id}">
+			        <button type="submit" class="btn btn-danger btn-sm">
+			          Delete
+			        </button>
+			      </form>
+			    </td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
